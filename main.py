@@ -29,7 +29,7 @@ for step in range(0, NUMBER_OF_ROWS, BATCH_SIZE):
     # Convert JSON data to DataFrame
     flattened_list = pd.DataFrame(data[step: step + BATCH_SIZE]).apply(
         lambda row: "\n".join([
-                                  f'''INSERT INTO translations (product_id, text, lang_code, translation) VALUES('{row["_id"]["$oid"]}', '{row["text"].replace("'", "''")}', '{key}', '{row["translations"][key].replace("'", "''")}');'''
+                                  f'''INSERT INTO translations (oid, text, lang_code, translation) VALUES('{row["_id"]["$oid"]}', '{row["text"].replace("'", "''")}', '{key}', '{row["translations"][key].replace("'", "''")}');'''
                                   for key in row['translations'].keys()]), axis=1).str.cat(sep=' ')
     try:
         # Execute the create table query

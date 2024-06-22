@@ -69,7 +69,7 @@ CREATE TABLE translations (
     id SERIAL PRIMARY KEY,
     oid VARCHAR(24),
     text TEXT,
-    language VARCHAR(2),
+    lang_code VARCHAR(2),
     translation TEXT
 );
 ```
